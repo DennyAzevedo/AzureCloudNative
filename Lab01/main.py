@@ -51,10 +51,11 @@ def insert_product(product_name, product_description, product_price, product_ima
 def lista_produtos():
 	try:
 		conn = pymssql.connect(server=SQLServer, user=SQLUser, password=SQLPassword, database=SQLDatabase)
-		cursor = conn.cursor()
-		select_query = "SELECT nome, descricao, preco, imagem_url FROM produtos"
+		cursor = conn.cursor(as_dict=True)
+		select_query = "SELECT id, nome, descricao, preco, imagem_url FROM produtos"
 		cursor.execute(select_query)
 		products = cursor.fetchall()
+		cursor.close()
 		conn.close()
 		return products
 	except Exception as e:
@@ -64,16 +65,25 @@ def lista_produtos():
 def lista_produtos_tela():
 	products = lista_produtos()
 	if products:
-		st.write("Lista de Produtos:")
-		for product in products:
-			st.write(f"**Nome:** {product[0]}")
-			st.write(f"**Descrição:** {product[1]}")
-			st.write(f"**Preço:** R$ {product[2]:.2f}")
-			if product[3]:
-				st.image(product[3])
-			st.write("---")
+	# Define o número de cards por linha
+		cards_por_linha = 3
+		# Cria as colunas iniciais
+		cols = st.columns(cards_por_linha)
+		for i, product in enumerate(products):
+			col = cols[i % cards_por_linha]
+			with col:
+				st.markdown(f"### {product['nome']}")
+				st.write(f"**Descrição:** {product['descricao']}")
+				st.write(f"**Preço:** R$ {product['preco']:.2f}")
+				if product["imagem_url"]:
+					html_img = f'<img src="{product["imagem_url"]}" width="200" height="200" alt="Imagem do produto">'
+					st.markdown(html_img, unsafe_allow_html=True)
+				st.markdown("---")
+			# A cada 'cards_por_linha' produtos, se ainda houver produtos, cria novas colunas
+			if (i + 1) % cards_por_linha == 0 and (i + 1) < len(products):
+				cols = st.columns(cards_por_linha)
 	else:
-		st.write("Nenhum produto cadastrado.")
+		st.info("Nenhum produto encontrado.")
 
 if st.button("Cadastrar Produto"):
 	if product_image is not None:
