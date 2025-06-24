@@ -1,4 +1,4 @@
-# 💻 Sobre o Projeto
+# 💻 Sobre o Bootcamp Microsoft Cloud Native
 
 Este bootcamp avançado foi projetado para capacitar desenvolvedores e profissionais de TI com as habilidades práticas necessárias para construir, implantar e gerenciar aplicações modernas utilizando a plataforma Microsoft Azure. O foco está em tecnologias como App Services, Azure Container Apps,  além de conceitos fundamentais de DevOps aplicados ao ecossistema Microsoft.
 
