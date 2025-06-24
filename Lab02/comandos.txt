@@ -1,0 +1,22 @@
+docker build -t datascience/landingpage:latest .
+
+docker run -d -p 8080:80 datascience/landingpage:latest
+
+az login
+
+az acr login --name acrdiolabdenlab02
+
+docker tag datascience/landingpage:latest acrdiolabdenlab02.azurecr.io/datascience-landingpage:latest
+
+docker push acrdiolabdenlab02.azurecr.io/datascience-landingpage:latest
+
+Criar deployment.yaml
+
+Criar service.yaml
+
+az aks get-credentials --resource-group Lab002 --name aks-dialab-den-lab02
+
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+kubectl get svc landing-page

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cientista de Dados - OnePage</title>
+    <style>
+        /* Reset e estilos gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        /* Barra de navegação */
+        header {
+            background: #333;
+            color: #fff;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+        nav {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+        }
+        nav a:hover {
+            background: #555;
+        }
+        /* Sessões */
+        section {
+            padding: 100px 20px 60px;
+			min-height: 200px;
+        }
+
+		#home {
+			min-height: 600px;
+		}
+        #home {
+            background: url('https://img.freepik.com/fotos-premium/cientista-de-dados-trabalhando-com-tela-virtual_969090-622.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            position: relative;
+        }
+        #home::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        #home .content {
+            position: relative;
+            z-index: 1;
+        }
+        #sobre, #projetos, #contato {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        /* Estilo para imagem de perfil */
+        .perfil {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 20px auto;
+            display: block;
+        }
+        /* Rodapé */
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+        }
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#projetos">Projetos</a>
+            <a href="#contato">Contato</a>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="content">
+            <h1>Cientista de Dados</h1>
+            <p>Explorando os dados para transformar realidades.</p>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Mim</h2>
+        <img class="perfil" src="https://img.freepik.com/fotos-premium/cientista-de-dados-em-fundo-branco-v-6-id-de-trabalho-128449ebdaa244bbac7076a91a08f420_1134901-11431.jpg" alt="Foto de Perfil">
+        <p>Olá! Sou um Cientista de Dados com vasta experiência em análise estatística, machine learning e visualização de dados. Minha paixão é transformar dados brutos em insights estratégicos que ajudam a tomar decisões informadas.</p>
+    </section>
+
+    <section id="projetos">
+        <h2>Projetos</h2>
+        <p>Confira alguns dos meus projetos:</p>
+        <ul>
+            <li><a href="https://example.com/projeto1" target="_blank" rel="noopener">Projeto 1</a></li>
+            <li><a href="https://example.com/projeto2" target="_blank" rel="noopener">Projeto 2</a></li>
+            <li><a href="https://example.com/projeto3" target="_blank" rel="noopener">Projeto 3</a></li>
+        </ul>
+        <p>Essa apresentação também demonstra o uso de Docker e AKS (Azure Kubernetes Service) para deploy e gerenciamento de aplicações.</p>
+    </section>
+
+    <section id="contato">
+        <h2>Contato</h2>
+        <p>Fique à vontade para entrar em contato:</p>
+        <p>Email: cientistadedados@exemplo.com</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Cientista de Dados. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling para navegação
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if(targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop - 60, // ajuste para altura do header
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
